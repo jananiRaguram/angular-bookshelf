@@ -1,6 +1,7 @@
 # Bookshelf
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+Using Angular tour of heroes as the base code
 
 ## Development server
 
