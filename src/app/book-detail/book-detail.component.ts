@@ -32,4 +32,10 @@ export class BookDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void{
+    if(this.book){
+      this.bookService.updateBook(this.book).subscribe(() => this.goBack());
+    }
+  }
 }
