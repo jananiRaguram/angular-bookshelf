@@ -5,7 +5,7 @@
     <ul class="search-result">
       <li *ngFor="let book of books$ | async" >
         <a routerLink="/detail/{{book.id}}">
-          {{book.name}}
+          {{book.title}}
         </a>
       </li>
     </ul>

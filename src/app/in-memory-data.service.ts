@@ -8,15 +8,19 @@ import { Book } from './book';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const books = [
-      { id: 12, name: 'Dr. Nice' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr. IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { id: 1, 
+        title: 'The Ballad of Songbirds and Snakes',
+        author: 'Suzanne Collins',
+        numPgs: 747,
+        read: false 
+      },
+      { id: 2, 
+        title: 'The Priory of the Orange Tree',
+        author: 'Samantha Shannon',
+        numPgs: 848,
+        read: true 
+      }
+    
     ];
     return {books};
   }

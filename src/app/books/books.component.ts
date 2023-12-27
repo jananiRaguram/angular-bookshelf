@@ -10,32 +10,42 @@ import { BookService } from '../book.service';
 })
 export class BooksComponent implements OnInit {
   books: Book[] = [];
-
+  book = <Book>{};
   constructor(private bookService: BookService) { }
-
+  
+ 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getBooks();
   }
 
-  getHeroes(): void {
+  getBooks(): void {
     this.bookService.getBooks()
     .subscribe(books => this.books = books);
-  }
-
-  add(name: string): void{
-    name = name.trim();
-    if(!name){
-      return;
-    }
-    this.bookService.addBook({name} as Book).subscribe(
-      book => {
-        this.books.push(book);
-      }
-    );
   }
 
   delete(book: Book): void{
     this.books = this.books.filter(b => b !== book);
     this.bookService.deleteBook(book.id).subscribe();
+  }
+
+  add(f: Book): void{
+    let title, author: String;
+    let numPgs: number;
+    let read: boolean;
+
+    title = f.title.trim();
+    author = f.author.trim();
+    numPgs = f.numPgs;
+    read = f.read;
+
+    if(!title || !author || numPgs == 0){
+      return;
+    }
+
+    this.bookService.addBook({title, author, numPgs, read} as Book).subscribe(
+      book => {
+        this.books.push(book);
+      }
+    );
   }
 }

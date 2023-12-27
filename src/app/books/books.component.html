@@ -2,19 +2,36 @@
 <ul class="books">
   <li *ngFor="let book of books">
     <a routerLink="/detail/{{book.id}}">
-      <span class="badge">{{book.id}}</span> {{book.name}}
+      <span class="badge">{{book.id}}</span> {{book.title}}
     </a>
     <button type="button" class="delete" title="delete book" (click)="delete(book)">x</button>
   </li>
 </ul>
 
-<div>
-  <label for="new-book">Book Title: </label>
-  <input id="new-book" #bookName />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(bookName.value); bookName.value=''">
-    Add Book
-  </button>
-</div>
+<form #f="ngForm" novalidate>
+    <div>
+        <label for="title">Book Title: </label>
+        <input type="text" name="title"  [(ngModel)]="book.title"/>   
+    </div>
+    <div>
+        <label for="author">Author: </label>
+        <input type="text" name="author" [(ngModel)]="book.author"/>
+    </div>
+    <div>
+        <label for="numPgs">Pages: </label>
+        <input type="number" name="numPgs" [(ngModel)]="book.numPgs" />
+    </div>   
+    <div>
+        <label for="read"> 
+            <input type="checkbox" name="read" [(ngModel)]="book.read"/>
+            Read
+        </label>
+       
+    </div>
+      
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="submit" class="add-button" (click)="add(f.value)">
+      Add Book
+    </button>
+</form>
 
